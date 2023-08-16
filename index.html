@@ -13,10 +13,27 @@
     <title>Document</title>
 </head>
 <style>
-	#widthVal {font-size:40px;}
+  * {margin:0;padding:0;}
+  .wrap {width:100%;min-height:100vh;background:#dfdfff;}
+  
+  .wrap .box {width:750px;min-height:100vh;margin:0 auto;background:#42ffef;}
+	#widthVal {text-align:center;font-size:40px;}
+
+  @media (max-width:749px) {
+    
+    .wrap .box {width:100%;min-height:100vh;margin:0 auto;background:#42ffef;}
+    #widthVal {text-align:center;font-size:5.33333vw;}
+  }
 </style>
 <body>
-  <div id="widthVal"></div>
+  <div class="wrap">
+    <div class="box">
+      <div id="widthVal"></div>
+    </div>
+  </div>
+  
+
+
 </body>
 </html>
 <script>
