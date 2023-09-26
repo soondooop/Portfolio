@@ -140,10 +140,12 @@ diffDay();
                         $('.map_hold').on('click',function(){
                             if($(this).hasClass('on') == true){
                                 $(this).removeClass('on').addClass('off');
+                                $('.map_box').removeClass('hold');
                                 setDraggable(true);
                                 $('.map_hold .txt').text('고정 해제');
                             } else {
                                 $(this).removeClass('off').addClass('on');
+                                $('.map_box').addClass('hold');
                                 setDraggable(false);
                                 $('.map_hold .txt').text('지도 고정');
                             }
@@ -314,7 +316,8 @@ body.off{overflow: hidden;}
 .nav_cont_5 .info_sub_tit {margin-bottom:20px;letter-spacing:5px;}
 .nav_cont_5 .info_tit {margin-bottom:70px;}
 .nav_cont_5 .cont_map {width:650px;margin:0 auto 40px;}
-.nav_cont_5 .cont_map .map_box {width:100%;height:400px;background:#fff;}
+.nav_cont_5 .cont_map .map_box {position:relative;width:100%;height:400px;background:#fff;}
+.nav_cont_5 .cont_map .map_box.hold #map::after {position:absolute;top:0;left:0;content:'';display:block;width:100%;height:100%;background:#fff;opacity:0.3;}
 .nav_cont_5 .cont_map .map_box #map {width:100%;height:400px;}
 .nav_cont_5 .cont_map .map_search {display:flex;justify-content:space-between;align-items:center;padding:15px 30px;background:#f5e9d9;}
 .nav_cont_5 .cont_map .map_search .search_tit {position:relative;margin-right:20px;font-size:20px;font-weight:500;}
@@ -956,7 +959,7 @@ body.off{overflow: hidden;}
                     오시는 길
                 </div>
                 <div class="cont_map">
-                    <div class="map_box box">
+                    <div class="map_box box hold">
                         <div id="map"></div>
                         <!-- https://apis.map.kakao.com/web/guide/ -->
                     </div>
