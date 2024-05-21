@@ -10,17 +10,29 @@
     <title>테스트.</title>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 </head>
+	<script>
+
+(function(){
+  // Loop through all images on the page adding necessary styles and 
+  // event listener to prevent images from opening the context menu.
+	document.querySelectorAll('img').forEach(img => {
+		img.style.webkitUserSelect = 'none';
+		img.style.webkitTouchCallout = 'none';
+		img.addEventListener('contextmenu', evt => {
+			evt.preventDefault();
+			return false;
+		});
+	});
+})()
+		
+	</script>
 <script> 
-( function (){ // 이미지가 컨텍스트 메뉴를 열지 못하도록 필요한 스타일과 // 이벤트 리스너를 추가하여 페이지의 모든 이미지를 반복합니다 . 
-  document . querySelectorAll ( 'img' ). forEach ( img => { 
-    img .style .webkitUserSelect = ' none ' ; 
-    img .addEventListener ( ' contextmenu ' , evt = > { evt .preventDefault 
-    ( ) ; } ) ;
+
 $(document).ready(function(){
     $(document).bind("contextmenu", function(e) {
        	return false;
     });
-    console.log('ver.1.0111');
+    console.log('ver.1.01');
     
 })
 </script>
