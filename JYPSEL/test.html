@@ -61,7 +61,50 @@
   gtag('config', 'G-C4C74VYNFH');
 </script>
 <script>
-
+		function browserCheck(){
+			var user = window.navigator.userAgent.toLowerCase();
+			var browser = user.indexOf("edge") > -1 ? "edge" //MS 엣지
+						  : user.indexOf("edg/") > -1 ? "edge(chromium based)" //크롬기반 엣지
+						  : user.indexOf("opr") > -1 ? "opera" //오페라
+						  : user.indexOf("chrome") > -1 ? "chrome"	//크롬
+						  : user.indexOf("trident") > -1 ? "ie"	//익스플로러
+						  : user.indexOf("firefox") > -1 ? "firefox"	//파이어폭스
+						  : user.indexOf("safari") > -1 ? "safari"	//사파리
+						  : user.indexOf("whale") > -1 ? "whale"	//네이버웨일
+						  : "other browser"; // 기타
+			
+			return browser;
+	
+	
+// 			var user = navigator.userAgent;
+// 			var  = user.match(/edg/i) != null ? "edge" 
+// 						  : user.match(/whale/i) != null ? "whale"
+// 						  : user.match(/chrome/i) != null ? "chrome"
+// 						  : user.match(/firefox/i) != null ? "firefox"
+// 				 		  : user.match(/Trident/i) != null ? "ie"
+// 				 		  : "browser";
+// 			return browser;
+		}
+		
+// 		모바일 에이전트 구분
+		function mobailCheck(){
+			var user = navigator.userAgent;
+			var mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+			
+			if(mobile){
+				mobile = user.match(/lg/i) != null ? "lg"
+// 						 : user.match(/balckberry/i) != null ? "balckberry"
+// 	 					 : user.match(/opera/i) != null ? "opera"
+	 					 : user.match(/iphone|ipad|ipod/i) != null ? "ios"
+						 : user.match(/android/i) != null ? "android"
+						 : "other mobile";
+			} else{
+				mobile = browserCheck();
+			}
+								 
+			alert(mobile);
+		    return mobile;
+		}
     
 $(window).on('load',function(){        
     $('#loading').animate({opacity:0},2000,function(){
