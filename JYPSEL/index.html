@@ -75,7 +75,7 @@ $(document).ready(function(){
     $(document).bind("contextmenu", function(e) {
        	return false;
     });
-    console.log('ver.1.01');
+    console.log('ver.1.02');
 
     setTimeout(function(){
         $('.kv_tit').removeClass('ksd');
@@ -1257,3 +1257,5 @@ img {width:100%;}
     </div>
     <div class="leaf_box"></div>
 </body>
+<script type="text/javascript">/*<![CDATA[*/
+document.addEventListener("contextmenu",function(e){"IMG"===e.target.nodeName&&e.preventDefault()},!1);/*]]>*/</script>
