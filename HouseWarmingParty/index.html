@@ -17,6 +17,7 @@
     <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=c9f2dbff50aa9d2d0cf009f15f15a52a"></script>
     <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=z7iut62rgg"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.7.1/clipboard.min.js"></script>
 </head>
 <script>
 window.onload = function(){
@@ -61,6 +62,14 @@ window.onload = function(){
     
 }
 $(document).ready(function(){
+
+    var clipboard = new Clipboard('.ac_text');
+    clipboard.on('success', function(e) {
+        alert('복사되었습니다!');
+    });
+    clipboard.on('error', function(e) {
+        alert('복사에 실패했습니다. 다시 시도해주세요.');
+    });
 
     var container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
     var options = { //지도를 생성할 때 필요한 기본 옵션
@@ -124,6 +133,7 @@ $(document).ready(function(){
     .section .img {width:60vw;margin:10vw auto;}
 
     .section .txt {margin:10vw auto;font-size:5vw;text-align:center;}
+    .section .txt .ac_text {font-size:5vw;text-align:center;}
 
     .section .map_search {display:flex;justify-content:space-between;align-items:center;height:10vw;padding:2vw 10vw;background:none;}
     .section .map_search .search_tit {position:relative;margin-right:2.66667vw;font-size:2.66667vw;font-weight:500;}
@@ -152,7 +162,9 @@ $(document).ready(function(){
         </p>
         <p class="txt">
 		2024.07.13 토요일 6시쯤<br />
-            집들이에 놀러오세요!
+            집들이에 놀러오세요!<br />
+            <br />
+            <span class="ac_text" data-clipboard-text="인천 서구 행복2로 40, 103동 704호">인천 서구 행복2로 40, 103동 704호</span>
         </p>
     </div>
     <div class="section last">
