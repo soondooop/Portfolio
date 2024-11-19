@@ -1,4 +1,4 @@
-const GITHUB_TOKEN = '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';
+const GITHUB_TOKEN = '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';
 const REPO_OWNER = 'soondooop';
 const REPO_NAME = 'soondooop';
 
