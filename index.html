@@ -1,54 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
+    <title>GitHub 방명록</title>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>soondooop</title>
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/style.css">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/gsap.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.4/ScrollTrigger.min.js"></script>
-	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-    <title>Document</title>
+    <style>
+        .guestbook-entry {
+            border: 1px solid #ddd;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .entry-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .entry-actions {
+            margin-top: 10px;
+        }
+        .message {
+            white-space: pre-wrap;
+        }
+        .edit-form {
+            display: none;
+            margin-top: 10px;
+        }
+        form {
+            margin-bottom: 30px;
+        }
+        textarea {
+            width: 100%;
+            min-height: 100px;
+        }
+        .password-input {
+            margin: 10px 0;
+        }
+    </style>
 </head>
-<style>
-  * {margin:0;padding:0;}
-  .wrap {width:100%;min-height:100vh;background:#dfdfff;}
-  
-  .wrap .box {width:750px;min-height:100vh;margin:0 auto;background:#42ffef;}
-	#widthVal {text-align:center;font-size:40px;}
-
-  @media (max-width:749px) {
-    
-    .wrap .box {width:100%;min-height:100vh;margin:0 auto;background:#42ffef;}
-    #widthVal {text-align:center;font-size:5.33333vw;}
-  }
-</style>
 <body>
-  <div class="wrap">
-    <div class="box">
-      <div id="widthVal"></div>
+    <div id="guestbook">
+        <h1>방명록</h1>
+        <form id="guestbookForm">
+            <div>
+                <label for="name">이름:</label>
+                <input type="text" id="name" required>
+            </div>
+            <div>
+                <label for="message">메시지:</label>
+                <textarea id="message" required></textarea>
+            </div>
+            <div class="password-input">
+                <label for="password">비밀번호:</label>
+                <input type="password" id="password" required>
+            </div>
+            <button type="submit">등록하기</button>
+        </form>
+
+        <h2>방명록 목록</h2>
+        <div id="guestbookEntries"></div>
     </div>
-  </div>
-  
-
-
 </body>
-</html>
-<script>
-  $(document).ready(function(){
-    var realSize = document.body.clientWidth;
-
-    function sizeCheck(){
-	    realSize = document.body.clientWidth;
-      $('#widthVal').html(realSize);
-    }
-	sizeCheck();
-    $(window).on('resize',function(){
-    	console.log(realSize);
-      sizeCheck();
-    })
-  })
-</script>
 </html>
