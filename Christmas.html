@@ -154,20 +154,14 @@
                 <option value="yes">참석합니다</option>
                 <option value="no">불참합니다</option>
             </select>
-            <textarea placeholder="메시지를 남겨주세요" id="message"></textarea>
+            <textarea placeholder="메시지를 남겨주세요"></textarea>
             <button class="rsvp-button" onclick="submitRSVP()">제출하기</button>
         </div>
     </div>
 
-    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.x.x/firebase-firestore.js"></script>
-
     <script type="module">
-      // Firebase 구성
-      import { initializeApp } from "firebase/app";
-    //   import { getFirestore, collection, addDoc } from 'https://www.gstatic.com/firebasejs/9.x.x/firebase-firestore.js';
         // Import the functions you need from the SDKs you need
-        
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
         // TODO: Add SDKs for Firebase products that you want to use
         // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -185,12 +179,12 @@
         const app = initializeApp(firebaseConfig);
       const db = getFirestore(app);
 
-      // RSVP 제출 함수 수정
-      async function submitRSVP() {
+      // RSVP 제출 함수를 전역 스코프에 추가
+      window.submitRSVP = async function() {
         const name = document.getElementById('name').value;
         const attendance = document.getElementById('attendance').value;
-        const message = document.getElementById('message').value;
-        
+        const message = document.querySelector('textarea').value;
+
         if(!name) {
           alert('이름을 입력해주세요!');
           return;
@@ -210,15 +204,12 @@
           
           // 폼 초기화
           document.getElementById('name').value = '';
-          document.getElementById('message').value = '';
+          document.querySelector('textarea').value = '';
         } catch (error) {
           console.error("Error adding document: ", error);
           alert('응답 저장 중 오류가 발생했습니다. 다시 시도해주세요.');
         }
-      }
-
-      // submitRSVP 함수를 전역으로 사용할 수 있도록 설정
-      window.submitRSVP = submitRSVP;
+      };
     </script>
 
     <script>
